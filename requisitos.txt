@@ -1,0 +1,22 @@
+Buscaremos un conjunto de posts en base a unas palabras clave definidas
+
+montaresmo un grafo weighed que relacione los posts en base a las palabras clave que contengan. Sobre ese grafo queremos calcular las siguientes metricas:
+- Degree distribution
+- Average degree
+- Strenght distribution
+- Average strenght 
+- 
+- Betweennes centrality 
+- Closeness centrality 
+- 
+- Graph density
+- Global clustering
+- Graph diameter
+- Community modularity
+- 
+- Clusters (for measure)
+
+Para las medidas locales se mostrará una distribucion.
+
+
+Por otro lado queremos usar un LLM para generar posts en base a las palabras clave originales y compararlo con el anterior.
