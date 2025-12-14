@@ -1,0 +1,45 @@
+w1,w2,count
+transizione verde,co2,3
+transizione verde,emissioni,6
+transizione verde,riscaldamento globale,3
+transizione verde,disinformazione,5
+transizione verde,energia pulita,2
+effetto serra,co2,14
+effetto serra,emissioni,20
+effetto serra,riscaldamento globale,5
+effetto serra,estinzione,1
+perdita di biodiversità,deforestazione,2
+eventi meteorologici estremi,riscaldamento globale,2
+eventi meteorologici estremi,deforestazione,2
+co2,emissioni,313
+co2,riscaldamento globale,27
+co2,energia rinnovabile,6
+co2,catastrofe,2
+co2,antropogenico,5
+co2,desertificazione,2
+co2,deforestazione,1
+co2,energia pulita,10
+co2,estinzione,2
+emissioni,riscaldamento globale,37
+emissioni,scioglimento dei ghiacciai,2
+emissioni,energia rinnovabile,8
+emissioni,disinformazione,2
+emissioni,catastrofe,2
+emissioni,deforestazione,2
+emissioni,energia pulita,16
+riscaldamento globale,scioglimento dei ghiacciai,2
+riscaldamento globale,energia rinnovabile,1
+riscaldamento globale,disinformazione,7
+riscaldamento globale,catastrofe,4
+riscaldamento globale,antropogenico,7
+riscaldamento globale,desertificazione,4
+riscaldamento globale,deforestazione,2
+riscaldamento globale,energia pulita,1
+riscaldamento globale,innalzamento del livello del mare,1
+riscaldamento globale,estinzione,8
+energia rinnovabile,disinformazione,1
+energia rinnovabile,energia pulita,4
+disinformazione,catastrofe,2
+catastrofe,estinzione,1
+desertificazione,deforestazione,4
+deforestazione,estinzione,1

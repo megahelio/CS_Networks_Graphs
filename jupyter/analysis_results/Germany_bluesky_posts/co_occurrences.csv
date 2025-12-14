@@ -1,0 +1,77 @@
+w1,w2,count
+grüne Wende,co2,3
+grüne Wende,Emissionen,2
+grüne Wende,erneuerbare Energien,1
+grüne Wende,Katastrophe,1
+Treibhauseffekt,Biodiversitätsverlust,2
+Treibhauseffekt,co2,91
+Treibhauseffekt,Emissionen,17
+Treibhauseffekt,Erderwärmung,17
+Treibhauseffekt,Katastrophe,12
+Treibhauseffekt,anthropogen,4
+Treibhauseffekt,Abholzung,2
+Treibhauseffekt,Aussterben,2
+Biodiversitätsverlust,extreme Wetterereignisse,2
+Biodiversitätsverlust,co2,5
+Biodiversitätsverlust,Emissionen,6
+Biodiversitätsverlust,Erderwärmung,2
+Biodiversitätsverlust,Katastrophe,15
+Biodiversitätsverlust,Abholzung,7
+Biodiversitätsverlust,Meeresspiegelanstieg,2
+Biodiversitätsverlust,Aussterben,3
+extreme Wetterereignisse,co2,4
+extreme Wetterereignisse,Emissionen,4
+extreme Wetterereignisse,Erderwärmung,5
+extreme Wetterereignisse,Katastrophe,16
+extreme Wetterereignisse,anthropogen,1
+extreme Wetterereignisse,Meeresspiegelanstieg,2
+co2,Emissionen,403
+co2,Erderwärmung,71
+co2,Gletscherschmelze,5
+co2,erneuerbare Energien,19
+co2,Fehlinformationen,1
+co2,Katastrophe,28
+co2,anthropogen,2
+co2,Wüstenbildung,2
+co2,Abholzung,39
+co2,saubere Energie,11
+co2,Meeresspiegelanstieg,11
+co2,Aussterben,6
+Emissionen,Erderwärmung,49
+Emissionen,Gletscherschmelze,6
+Emissionen,erneuerbare Energien,14
+Emissionen,Katastrophe,30
+Emissionen,anthropogen,4
+Emissionen,Wüstenbildung,1
+Emissionen,Abholzung,21
+Emissionen,saubere Energie,9
+Emissionen,Meeresspiegelanstieg,4
+Emissionen,Aussterben,4
+Erderwärmung,Gletscherschmelze,7
+Erderwärmung,Katastrophe,59
+Erderwärmung,anthropogen,1
+Erderwärmung,Wüstenbildung,2
+Erderwärmung,Abholzung,5
+Erderwärmung,saubere Energie,1
+Erderwärmung,Meeresspiegelanstieg,11
+Erderwärmung,Aussterben,4
+Gletscherschmelze,Katastrophe,18
+Gletscherschmelze,Meeresspiegelanstieg,4
+Gletscherschmelze,Aussterben,1
+erneuerbare Energien,Katastrophe,4
+erneuerbare Energien,saubere Energie,6
+erneuerbare Energien,Aussterben,1
+Fehlinformationen,Katastrophe,4
+Katastrophe,anthropogen,7
+Katastrophe,Wüstenbildung,12
+Katastrophe,Abholzung,22
+Katastrophe,saubere Energie,5
+Katastrophe,Meeresspiegelanstieg,19
+Katastrophe,Aussterben,18
+anthropogen,Abholzung,2
+anthropogen,Aussterben,1
+Wüstenbildung,Abholzung,4
+Wüstenbildung,Meeresspiegelanstieg,2
+Wüstenbildung,Aussterben,1
+Abholzung,Aussterben,8
+Meeresspiegelanstieg,Aussterben,1

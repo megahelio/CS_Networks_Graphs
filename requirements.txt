@@ -5,6 +5,8 @@ numpy
 pandas
 scipy
 tqdm
+seaborn
+pyvis
 
 # for jupyter (optional)
 ipykernel

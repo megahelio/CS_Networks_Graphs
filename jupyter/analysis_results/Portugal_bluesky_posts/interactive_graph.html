@@ -1,0 +1,167 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script src="lib/bindings/utils.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 750px;
+                 background-color: #ffffff;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+
+             
+             #config {
+                 float: left;
+                 width: 400px;
+                 height: 600px;
+             }
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+        
+            <div id="config"></div>
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"font": {"color": "black"}, "group": 2, "id": "transi\u00e7\u00e3o verde", "label": "transi\u00e7\u00e3o verde", "shape": "dot", "title": "transi\u00e7\u00e3o verde (Degree: 4)", "value": 4}, {"font": {"color": "black"}, "group": 1, "id": "efeito estufa", "label": "efeito estufa", "shape": "dot", "title": "efeito estufa (Degree: 13)", "value": 13}, {"font": {"color": "black"}, "group": 0, "id": "perda de biodiversidade", "label": "perda de biodiversidade", "shape": "dot", "title": "perda de biodiversidade (Degree: 9)", "value": 9}, {"font": {"color": "black"}, "group": 0, "id": "eventos clim\u00e1ticos extremos", "label": "eventos clim\u00e1ticos extremos", "shape": "dot", "title": "eventos clim\u00e1ticos extremos (Degree: 10)", "value": 10}, {"font": {"color": "black"}, "group": 1, "id": "co2", "label": "co2", "shape": "dot", "title": "co2 (Degree: 11)", "value": 11}, {"font": {"color": "black"}, "group": 1, "id": "emiss\u00f5es", "label": "emiss\u00f5es", "shape": "dot", "title": "emiss\u00f5es (Degree: 14)", "value": 14}, {"font": {"color": "black"}, "group": 0, "id": "aquecimento global", "label": "aquecimento global", "shape": "dot", "title": "aquecimento global (Degree: 15)", "value": 15}, {"font": {"color": "black"}, "group": 0, "id": "derretimento das geleiras", "label": "derretimento das geleiras", "shape": "dot", "title": "derretimento das geleiras (Degree: 8)", "value": 8}, {"font": {"color": "black"}, "group": 2, "id": "energia renov\u00e1vel", "label": "energia renov\u00e1vel", "shape": "dot", "title": "energia renov\u00e1vel (Degree: 8)", "value": 8}, {"font": {"color": "black"}, "group": 0, "id": "desinforma\u00e7\u00e3o", "label": "desinforma\u00e7\u00e3o", "shape": "dot", "title": "desinforma\u00e7\u00e3o (Degree: 6)", "value": 6}, {"font": {"color": "black"}, "group": 0, "id": "cat\u00e1strofe", "label": "cat\u00e1strofe", "shape": "dot", "title": "cat\u00e1strofe (Degree: 7)", "value": 7}, {"font": {"color": "black"}, "group": 0, "id": "antropog\u00eanico", "label": "antropog\u00eanico", "shape": "dot", "title": "antropog\u00eanico (Degree: 5)", "value": 5}, {"font": {"color": "black"}, "group": 3, "id": "biocombust\u00edveis sustent\u00e1veis", "label": "biocombust\u00edveis sustent\u00e1veis", "shape": "dot", "title": "biocombust\u00edveis sustent\u00e1veis (Degree: 0)", "value": 0}, {"font": {"color": "black"}, "group": 0, "id": "desertifica\u00e7\u00e3o", "label": "desertifica\u00e7\u00e3o", "shape": "dot", "title": "desertifica\u00e7\u00e3o (Degree: 10)", "value": 10}, {"font": {"color": "black"}, "group": 1, "id": "desmatamento", "label": "desmatamento", "shape": "dot", "title": "desmatamento (Degree: 11)", "value": 11}, {"font": {"color": "black"}, "group": 2, "id": "energia limpa", "label": "energia limpa", "shape": "dot", "title": "energia limpa (Degree: 10)", "value": 10}, {"font": {"color": "black"}, "group": 0, "id": "aumento do n\u00edvel do mar", "label": "aumento do n\u00edvel do mar", "shape": "dot", "title": "aumento do n\u00edvel do mar (Degree: 9)", "value": 9}, {"font": {"color": "black"}, "group": 0, "id": "extin\u00e7\u00e3o", "label": "extin\u00e7\u00e3o", "shape": "dot", "title": "extin\u00e7\u00e3o (Degree: 14)", "value": 14}]);
+                  edges = new vis.DataSet([{"color": "#440256", "from": "transi\u00e7\u00e3o verde", "opacity": 0.8, "title": "Co-occurrences: 4", "to": "efeito estufa", "value": 4}, {"color": "#440154", "from": "transi\u00e7\u00e3o verde", "opacity": 0.8, "title": "Co-occurrences: 2", "to": "eventos clim\u00e1ticos extremos", "value": 2}, {"color": "#440256", "from": "transi\u00e7\u00e3o verde", "opacity": 0.8, "title": "Co-occurrences: 4", "to": "emiss\u00f5es", "value": 4}, {"color": "#450559", "from": "transi\u00e7\u00e3o verde", "opacity": 0.8, "title": "Co-occurrences: 8", "to": "energia limpa", "value": 8}, {"color": "#450457", "from": "efeito estufa", "opacity": 0.8, "title": "Co-occurrences: 6", "to": "perda de biodiversidade", "value": 6}, {"color": "#440256", "from": "efeito estufa", "opacity": 0.8, "title": "Co-occurrences: 4", "to": "eventos clim\u00e1ticos extremos", "value": 4}, {"color": "#481467", "from": "efeito estufa", "opacity": 0.8, "title": "Co-occurrences: 29", "to": "co2", "value": 29}, {"color": "#fde725", "from": "efeito estufa", "opacity": 0.8, "title": "Co-occurrences: 550", "to": "emiss\u00f5es", "value": 550}, {"color": "#46307e", "from": "efeito estufa", "opacity": 0.8, "title": "Co-occurrences: 77", "to": "aquecimento global", "value": 77}, {"color": "#440154", "from": "efeito estufa", "opacity": 0.8, "title": "Co-occurrences: 2", "to": "derretimento das geleiras", "value": 2}, {"color": "#450559", "from": "efeito estufa", "opacity": 0.8, "title": "Co-occurrences: 8", "to": "energia renov\u00e1vel", "value": 8}, {"color": "#440256", "from": "efeito estufa", "opacity": 0.8, "title": "Co-occurrences: 3", "to": "cat\u00e1strofe", "value": 3}, {"color": "#440154", "from": "efeito estufa", "opacity": 0.8, "title": "Co-occurrences: 1", "to": "antropog\u00eanico", "value": 1}, {"color": "#424186", "from": "efeito estufa", "opacity": 0.8, "title": "Co-occurrences: 107", "to": "desmatamento", "value": 107}, {"color": "#46075a", "from": "efeito estufa", "opacity": 0.8, "title": "Co-occurrences: 9", "to": "energia limpa", "value": 9}, {"color": "#440256", "from": "efeito estufa", "opacity": 0.8, "title": "Co-occurrences: 3", "to": "extin\u00e7\u00e3o", "value": 3}, {"color": "#440154", "from": "perda de biodiversidade", "opacity": 0.8, "title": "Co-occurrences: 2", "to": "eventos clim\u00e1ticos extremos", "value": 2}, {"color": "#46075a", "from": "perda de biodiversidade", "opacity": 0.8, "title": "Co-occurrences: 9", "to": "emiss\u00f5es", "value": 9}, {"color": "#450559", "from": "perda de biodiversidade", "opacity": 0.8, "title": "Co-occurrences: 8", "to": "aquecimento global", "value": 8}, {"color": "#440154", "from": "perda de biodiversidade", "opacity": 0.8, "title": "Co-occurrences: 2", "to": "desinforma\u00e7\u00e3o", "value": 2}, {"color": "#440256", "from": "perda de biodiversidade", "opacity": 0.8, "title": "Co-occurrences: 4", "to": "desertifica\u00e7\u00e3o", "value": 4}, {"color": "#471063", "from": "perda de biodiversidade", "opacity": 0.8, "title": "Co-occurrences: 23", "to": "desmatamento", "value": 23}, {"color": "#440154", "from": "perda de biodiversidade", "opacity": 0.8, "title": "Co-occurrences: 1", "to": "energia limpa", "value": 1}, {"color": "#450559", "from": "perda de biodiversidade", "opacity": 0.8, "title": "Co-occurrences: 7", "to": "extin\u00e7\u00e3o", "value": 7}, {"color": "#440256", "from": "eventos clim\u00e1ticos extremos", "opacity": 0.8, "title": "Co-occurrences: 4", "to": "emiss\u00f5es", "value": 4}, {"color": "#481467", "from": "eventos clim\u00e1ticos extremos", "opacity": 0.8, "title": "Co-occurrences: 29", "to": "aquecimento global", "value": 29}, {"color": "#440256", "from": "eventos clim\u00e1ticos extremos", "opacity": 0.8, "title": "Co-occurrences: 4", "to": "energia renov\u00e1vel", "value": 4}, {"color": "#440256", "from": "eventos clim\u00e1ticos extremos", "opacity": 0.8, "title": "Co-occurrences: 4", "to": "desinforma\u00e7\u00e3o", "value": 4}, {"color": "#440154", "from": "eventos clim\u00e1ticos extremos", "opacity": 0.8, "title": "Co-occurrences: 2", "to": "cat\u00e1strofe", "value": 2}, {"color": "#46075a", "from": "eventos clim\u00e1ticos extremos", "opacity": 0.8, "title": "Co-occurrences: 10", "to": "desmatamento", "value": 10}, {"color": "#450559", "from": "eventos clim\u00e1ticos extremos", "opacity": 0.8, "title": "Co-occurrences: 8", "to": "aumento do n\u00edvel do mar", "value": 8}, {"color": "#32648e", "from": "co2", "opacity": 0.8, "title": "Co-occurrences: 176", "to": "emiss\u00f5es", "value": 176}, {"color": "#481769", "from": "co2", "opacity": 0.8, "title": "Co-occurrences: 33", "to": "aquecimento global", "value": 33}, {"color": "#440256", "from": "co2", "opacity": 0.8, "title": "Co-occurrences: 3", "to": "derretimento das geleiras", "value": 3}, {"color": "#440154", "from": "co2", "opacity": 0.8, "title": "Co-occurrences: 2", "to": "desinforma\u00e7\u00e3o", "value": 2}, {"color": "#440256", "from": "co2", "opacity": 0.8, "title": "Co-occurrences: 4", "to": "antropog\u00eanico", "value": 4}, {"color": "#440256", "from": "co2", "opacity": 0.8, "title": "Co-occurrences: 3", "to": "desertifica\u00e7\u00e3o", "value": 3}, {"color": "#46075a", "from": "co2", "opacity": 0.8, "title": "Co-occurrences: 10", "to": "desmatamento", "value": 10}, {"color": "#46085c", "from": "co2", "opacity": 0.8, "title": "Co-occurrences: 11", "to": "energia limpa", "value": 11}, {"color": "#440154", "from": "co2", "opacity": 0.8, "title": "Co-occurrences: 2", "to": "aumento do n\u00edvel do mar", "value": 2}, {"color": "#440256", "from": "co2", "opacity": 0.8, "title": "Co-occurrences: 3", "to": "extin\u00e7\u00e3o", "value": 3}, {"color": "#46327e", "from": "emiss\u00f5es", "opacity": 0.8, "title": "Co-occurrences: 78", "to": "aquecimento global", "value": 78}, {"color": "#440154", "from": "emiss\u00f5es", "opacity": 0.8, "title": "Co-occurrences: 2", "to": "derretimento das geleiras", "value": 2}, {"color": "#460b5e", "from": "emiss\u00f5es", "opacity": 0.8, "title": "Co-occurrences: 17", "to": "energia renov\u00e1vel", "value": 17}, {"color": "#450559", "from": "emiss\u00f5es", "opacity": 0.8, "title": "Co-occurrences: 8", "to": "cat\u00e1strofe", "value": 8}, {"color": "#440154", "from": "emiss\u00f5es", "opacity": 0.8, "title": "Co-occurrences: 2", "to": "antropog\u00eanico", "value": 2}, {"color": "#355f8d", "from": "emiss\u00f5es", "opacity": 0.8, "title": "Co-occurrences: 165", "to": "desmatamento", "value": 165}, {"color": "#471164", "from": "emiss\u00f5es", "opacity": 0.8, "title": "Co-occurrences: 24", "to": "energia limpa", "value": 24}, {"color": "#440256", "from": "emiss\u00f5es", "opacity": 0.8, "title": "Co-occurrences: 4", "to": "aumento do n\u00edvel do mar", "value": 4}, {"color": "#440154", "from": "emiss\u00f5es", "opacity": 0.8, "title": "Co-occurrences: 1", "to": "extin\u00e7\u00e3o", "value": 1}, {"color": "#46075a", "from": "aquecimento global", "opacity": 0.8, "title": "Co-occurrences: 9", "to": "derretimento das geleiras", "value": 9}, {"color": "#440256", "from": "aquecimento global", "opacity": 0.8, "title": "Co-occurrences: 3", "to": "energia renov\u00e1vel", "value": 3}, {"color": "#450559", "from": "aquecimento global", "opacity": 0.8, "title": "Co-occurrences: 8", "to": "desinforma\u00e7\u00e3o", "value": 8}, {"color": "#46085c", "from": "aquecimento global", "opacity": 0.8, "title": "Co-occurrences: 12", "to": "cat\u00e1strofe", "value": 12}, {"color": "#471063", "from": "aquecimento global", "opacity": 0.8, "title": "Co-occurrences: 23", "to": "antropog\u00eanico", "value": 23}, {"color": "#460b5e", "from": "aquecimento global", "opacity": 0.8, "title": "Co-occurrences: 16", "to": "desertifica\u00e7\u00e3o", "value": 16}, {"color": "#48186a", "from": "aquecimento global", "opacity": 0.8, "title": "Co-occurrences: 36", "to": "desmatamento", "value": 36}, {"color": "#440256", "from": "aquecimento global", "opacity": 0.8, "title": "Co-occurrences: 4", "to": "energia limpa", "value": 4}, {"color": "#460a5d", "from": "aquecimento global", "opacity": 0.8, "title": "Co-occurrences: 15", "to": "aumento do n\u00edvel do mar", "value": 15}, {"color": "#460a5d", "from": "aquecimento global", "opacity": 0.8, "title": "Co-occurrences: 14", "to": "extin\u00e7\u00e3o", "value": 14}, {"color": "#440256", "from": "derretimento das geleiras", "opacity": 0.8, "title": "Co-occurrences: 3", "to": "desertifica\u00e7\u00e3o", "value": 3}, {"color": "#440154", "from": "derretimento das geleiras", "opacity": 0.8, "title": "Co-occurrences: 1", "to": "desmatamento", "value": 1}, {"color": "#450457", "from": "derretimento das geleiras", "opacity": 0.8, "title": "Co-occurrences: 6", "to": "aumento do n\u00edvel do mar", "value": 6}, {"color": "#440256", "from": "derretimento das geleiras", "opacity": 0.8, "title": "Co-occurrences: 3", "to": "extin\u00e7\u00e3o", "value": 3}, {"color": "#440154", "from": "energia renov\u00e1vel", "opacity": 0.8, "title": "Co-occurrences: 2", "to": "desertifica\u00e7\u00e3o", "value": 2}, {"color": "#481467", "from": "energia renov\u00e1vel", "opacity": 0.8, "title": "Co-occurrences: 30", "to": "energia limpa", "value": 30}, {"color": "#440154", "from": "energia renov\u00e1vel", "opacity": 0.8, "title": "Co-occurrences: 2", "to": "aumento do n\u00edvel do mar", "value": 2}, {"color": "#440154", "from": "energia renov\u00e1vel", "opacity": 0.8, "title": "Co-occurrences: 1", "to": "extin\u00e7\u00e3o", "value": 1}, {"color": "#440154", "from": "desinforma\u00e7\u00e3o", "opacity": 0.8, "title": "Co-occurrences: 1", "to": "cat\u00e1strofe", "value": 1}, {"color": "#440256", "from": "desinforma\u00e7\u00e3o", "opacity": 0.8, "title": "Co-occurrences: 4", "to": "extin\u00e7\u00e3o", "value": 4}, {"color": "#440154", "from": "cat\u00e1strofe", "opacity": 0.8, "title": "Co-occurrences: 1", "to": "desertifica\u00e7\u00e3o", "value": 1}, {"color": "#440256", "from": "cat\u00e1strofe", "opacity": 0.8, "title": "Co-occurrences: 4", "to": "extin\u00e7\u00e3o", "value": 4}, {"color": "#440154", "from": "antropog\u00eanico", "opacity": 0.8, "title": "Co-occurrences: 1", "to": "extin\u00e7\u00e3o", "value": 1}, {"color": "#460b5e", "from": "desertifica\u00e7\u00e3o", "opacity": 0.8, "title": "Co-occurrences: 17", "to": "desmatamento", "value": 17}, {"color": "#440256", "from": "desertifica\u00e7\u00e3o", "opacity": 0.8, "title": "Co-occurrences: 3", "to": "energia limpa", "value": 3}, {"color": "#440154", "from": "desertifica\u00e7\u00e3o", "opacity": 0.8, "title": "Co-occurrences: 2", "to": "aumento do n\u00edvel do mar", "value": 2}, {"color": "#450559", "from": "desertifica\u00e7\u00e3o", "opacity": 0.8, "title": "Co-occurrences: 7", "to": "extin\u00e7\u00e3o", "value": 7}, {"color": "#460a5d", "from": "desmatamento", "opacity": 0.8, "title": "Co-occurrences: 13", "to": "energia limpa", "value": 13}, {"color": "#440256", "from": "desmatamento", "opacity": 0.8, "title": "Co-occurrences: 3", "to": "aumento do n\u00edvel do mar", "value": 3}, {"color": "#450559", "from": "desmatamento", "opacity": 0.8, "title": "Co-occurrences: 8", "to": "extin\u00e7\u00e3o", "value": 8}, {"color": "#440154", "from": "energia limpa", "opacity": 0.8, "title": "Co-occurrences: 2", "to": "extin\u00e7\u00e3o", "value": 2}, {"color": "#440256", "from": "aumento do n\u00edvel do mar", "opacity": 0.8, "title": "Co-occurrences: 3", "to": "extin\u00e7\u00e3o", "value": 3}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {
+    "configure": {
+        "enabled": true
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": true,
+            "type": "dynamic"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": true,
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+
+                  
+
+
+                  
+                  // if this network requires displaying the configure window,
+                  // put it in its div
+                  options.configure["container"] = document.getElementById("config");
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+
+                  
+
+
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>

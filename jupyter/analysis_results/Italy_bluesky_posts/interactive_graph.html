@@ -1,0 +1,167 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script src="lib/bindings/utils.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 750px;
+                 background-color: #ffffff;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+
+             
+             #config {
+                 float: left;
+                 width: 400px;
+                 height: 600px;
+             }
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+        
+            <div id="config"></div>
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"font": {"color": "black"}, "group": 0, "id": "transizione verde", "label": "transizione verde", "shape": "dot", "title": "transizione verde (Degree: 5)", "value": 5}, {"font": {"color": "black"}, "group": 1, "id": "effetto serra", "label": "effetto serra", "shape": "dot", "title": "effetto serra (Degree: 4)", "value": 4}, {"font": {"color": "black"}, "group": 0, "id": "perdita di biodiversit\u00e0", "label": "perdita di biodiversit\u00e0", "shape": "dot", "title": "perdita di biodiversit\u00e0 (Degree: 1)", "value": 1}, {"font": {"color": "black"}, "group": 0, "id": "eventi meteorologici estremi", "label": "eventi meteorologici estremi", "shape": "dot", "title": "eventi meteorologici estremi (Degree: 2)", "value": 2}, {"font": {"color": "black"}, "group": 1, "id": "co2", "label": "co2", "shape": "dot", "title": "co2 (Degree: 11)", "value": 11}, {"font": {"color": "black"}, "group": 1, "id": "emissioni", "label": "emissioni", "shape": "dot", "title": "emissioni (Degree: 10)", "value": 10}, {"font": {"color": "black"}, "group": 0, "id": "riscaldamento globale", "label": "riscaldamento globale", "shape": "dot", "title": "riscaldamento globale (Degree: 15)", "value": 15}, {"font": {"color": "black"}, "group": 0, "id": "scioglimento dei ghiacciai", "label": "scioglimento dei ghiacciai", "shape": "dot", "title": "scioglimento dei ghiacciai (Degree: 2)", "value": 2}, {"font": {"color": "black"}, "group": 1, "id": "energia rinnovabile", "label": "energia rinnovabile", "shape": "dot", "title": "energia rinnovabile (Degree: 5)", "value": 5}, {"font": {"color": "black"}, "group": 0, "id": "disinformazione", "label": "disinformazione", "shape": "dot", "title": "disinformazione (Degree: 5)", "value": 5}, {"font": {"color": "black"}, "group": 0, "id": "catastrofe", "label": "catastrofe", "shape": "dot", "title": "catastrofe (Degree: 5)", "value": 5}, {"font": {"color": "black"}, "group": 0, "id": "antropogenico", "label": "antropogenico", "shape": "dot", "title": "antropogenico (Degree: 2)", "value": 2}, {"font": {"color": "black"}, "group": 0, "id": "desertificazione", "label": "desertificazione", "shape": "dot", "title": "desertificazione (Degree: 3)", "value": 3}, {"font": {"color": "black"}, "group": 0, "id": "deforestazione", "label": "deforestazione", "shape": "dot", "title": "deforestazione (Degree: 7)", "value": 7}, {"font": {"color": "black"}, "group": 1, "id": "energia pulita", "label": "energia pulita", "shape": "dot", "title": "energia pulita (Degree: 5)", "value": 5}, {"font": {"color": "black"}, "group": 0, "id": "innalzamento del livello del mare", "label": "innalzamento del livello del mare", "shape": "dot", "title": "innalzamento del livello del mare (Degree: 1)", "value": 1}, {"font": {"color": "black"}, "group": 0, "id": "estinzione", "label": "estinzione", "shape": "dot", "title": "estinzione (Degree: 5)", "value": 5}]);
+                  edges = new vis.DataSet([{"color": "#450457", "from": "transizione verde", "opacity": 0.8, "title": "Co-occurrences: 3", "to": "co2", "value": 3}, {"color": "#46075a", "from": "transizione verde", "opacity": 0.8, "title": "Co-occurrences: 6", "to": "emissioni", "value": 6}, {"color": "#450457", "from": "transizione verde", "opacity": 0.8, "title": "Co-occurrences: 3", "to": "riscaldamento globale", "value": 3}, {"color": "#46075a", "from": "transizione verde", "opacity": 0.8, "title": "Co-occurrences: 5", "to": "disinformazione", "value": 5}, {"color": "#440256", "from": "transizione verde", "opacity": 0.8, "title": "Co-occurrences: 2", "to": "energia pulita", "value": 2}, {"color": "#471164", "from": "effetto serra", "opacity": 0.8, "title": "Co-occurrences: 14", "to": "co2", "value": 14}, {"color": "#48186a", "from": "effetto serra", "opacity": 0.8, "title": "Co-occurrences: 20", "to": "emissioni", "value": 20}, {"color": "#46075a", "from": "effetto serra", "opacity": 0.8, "title": "Co-occurrences: 5", "to": "riscaldamento globale", "value": 5}, {"color": "#440154", "from": "effetto serra", "opacity": 0.8, "title": "Co-occurrences: 1", "to": "estinzione", "value": 1}, {"color": "#440256", "from": "perdita di biodiversit\u00e0", "opacity": 0.8, "title": "Co-occurrences: 2", "to": "deforestazione", "value": 2}, {"color": "#440256", "from": "eventi meteorologici estremi", "opacity": 0.8, "title": "Co-occurrences: 2", "to": "riscaldamento globale", "value": 2}, {"color": "#440256", "from": "eventi meteorologici estremi", "opacity": 0.8, "title": "Co-occurrences: 2", "to": "deforestazione", "value": 2}, {"color": "#fde725", "from": "co2", "opacity": 0.8, "title": "Co-occurrences: 313", "to": "emissioni", "value": 313}, {"color": "#482071", "from": "co2", "opacity": 0.8, "title": "Co-occurrences: 27", "to": "riscaldamento globale", "value": 27}, {"color": "#46075a", "from": "co2", "opacity": 0.8, "title": "Co-occurrences: 6", "to": "energia rinnovabile", "value": 6}, {"color": "#440256", "from": "co2", "opacity": 0.8, "title": "Co-occurrences: 2", "to": "catastrofe", "value": 2}, {"color": "#46075a", "from": "co2", "opacity": 0.8, "title": "Co-occurrences: 5", "to": "antropogenico", "value": 5}, {"color": "#440256", "from": "co2", "opacity": 0.8, "title": "Co-occurrences: 2", "to": "desertificazione", "value": 2}, {"color": "#440154", "from": "co2", "opacity": 0.8, "title": "Co-occurrences: 1", "to": "deforestazione", "value": 1}, {"color": "#470d60", "from": "co2", "opacity": 0.8, "title": "Co-occurrences: 10", "to": "energia pulita", "value": 10}, {"color": "#440256", "from": "co2", "opacity": 0.8, "title": "Co-occurrences: 2", "to": "estinzione", "value": 2}, {"color": "#472a7a", "from": "emissioni", "opacity": 0.8, "title": "Co-occurrences: 37", "to": "riscaldamento globale", "value": 37}, {"color": "#440256", "from": "emissioni", "opacity": 0.8, "title": "Co-occurrences: 2", "to": "scioglimento dei ghiacciai", "value": 2}, {"color": "#460a5d", "from": "emissioni", "opacity": 0.8, "title": "Co-occurrences: 8", "to": "energia rinnovabile", "value": 8}, {"color": "#440256", "from": "emissioni", "opacity": 0.8, "title": "Co-occurrences: 2", "to": "disinformazione", "value": 2}, {"color": "#440256", "from": "emissioni", "opacity": 0.8, "title": "Co-occurrences: 2", "to": "catastrofe", "value": 2}, {"color": "#440256", "from": "emissioni", "opacity": 0.8, "title": "Co-occurrences: 2", "to": "deforestazione", "value": 2}, {"color": "#481467", "from": "emissioni", "opacity": 0.8, "title": "Co-occurrences: 16", "to": "energia pulita", "value": 16}, {"color": "#440256", "from": "riscaldamento globale", "opacity": 0.8, "title": "Co-occurrences: 2", "to": "scioglimento dei ghiacciai", "value": 2}, {"color": "#440154", "from": "riscaldamento globale", "opacity": 0.8, "title": "Co-occurrences: 1", "to": "energia rinnovabile", "value": 1}, {"color": "#46085c", "from": "riscaldamento globale", "opacity": 0.8, "title": "Co-occurrences: 7", "to": "disinformazione", "value": 7}, {"color": "#450559", "from": "riscaldamento globale", "opacity": 0.8, "title": "Co-occurrences: 4", "to": "catastrofe", "value": 4}, {"color": "#46085c", "from": "riscaldamento globale", "opacity": 0.8, "title": "Co-occurrences: 7", "to": "antropogenico", "value": 7}, {"color": "#450559", "from": "riscaldamento globale", "opacity": 0.8, "title": "Co-occurrences: 4", "to": "desertificazione", "value": 4}, {"color": "#440256", "from": "riscaldamento globale", "opacity": 0.8, "title": "Co-occurrences: 2", "to": "deforestazione", "value": 2}, {"color": "#440154", "from": "riscaldamento globale", "opacity": 0.8, "title": "Co-occurrences: 1", "to": "energia pulita", "value": 1}, {"color": "#440154", "from": "riscaldamento globale", "opacity": 0.8, "title": "Co-occurrences: 1", "to": "innalzamento del livello del mare", "value": 1}, {"color": "#460a5d", "from": "riscaldamento globale", "opacity": 0.8, "title": "Co-occurrences: 8", "to": "estinzione", "value": 8}, {"color": "#440154", "from": "energia rinnovabile", "opacity": 0.8, "title": "Co-occurrences: 1", "to": "disinformazione", "value": 1}, {"color": "#450559", "from": "energia rinnovabile", "opacity": 0.8, "title": "Co-occurrences: 4", "to": "energia pulita", "value": 4}, {"color": "#440256", "from": "disinformazione", "opacity": 0.8, "title": "Co-occurrences: 2", "to": "catastrofe", "value": 2}, {"color": "#440154", "from": "catastrofe", "opacity": 0.8, "title": "Co-occurrences: 1", "to": "estinzione", "value": 1}, {"color": "#450559", "from": "desertificazione", "opacity": 0.8, "title": "Co-occurrences: 4", "to": "deforestazione", "value": 4}, {"color": "#440154", "from": "deforestazione", "opacity": 0.8, "title": "Co-occurrences: 1", "to": "estinzione", "value": 1}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {
+    "configure": {
+        "enabled": true
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": true,
+            "type": "dynamic"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": true,
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+
+                  
+
+
+                  
+                  // if this network requires displaying the configure window,
+                  // put it in its div
+                  options.configure["container"] = document.getElementById("config");
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+
+                  
+
+
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>

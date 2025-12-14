@@ -1,0 +1,74 @@
+w1,w2,count
+transición verde,co2,1
+transición verde,emisiones,4
+transición verde,calentamiento global,1
+transición verde,energía renovable,1
+transición verde,desinformación,1
+transición verde,energía limpia,7
+efecto invernadero,pérdida de biodiversidad,13
+efecto invernadero,eventos climáticos extremos,1
+efecto invernadero,co2,97
+efecto invernadero,emisiones,483
+efecto invernadero,calentamiento global,61
+efecto invernadero,energía renovable,2
+efecto invernadero,catástrofe,3
+efecto invernadero,antropogénico,4
+efecto invernadero,deforestación,15
+efecto invernadero,energía limpia,3
+efecto invernadero,extinción,2
+pérdida de biodiversidad,eventos climáticos extremos,2
+pérdida de biodiversidad,co2,1
+pérdida de biodiversidad,emisiones,21
+pérdida de biodiversidad,calentamiento global,6
+pérdida de biodiversidad,catástrofe,3
+pérdida de biodiversidad,desertificación,18
+pérdida de biodiversidad,deforestación,22
+pérdida de biodiversidad,extinción,14
+eventos climáticos extremos,emisiones,1
+eventos climáticos extremos,calentamiento global,7
+eventos climáticos extremos,desinformación,1
+eventos climáticos extremos,catástrofe,1
+eventos climáticos extremos,antropogénico,3
+eventos climáticos extremos,desertificación,2
+co2,emisiones,488
+co2,calentamiento global,46
+co2,energía renovable,3
+co2,catástrofe,5
+co2,antropogénico,4
+co2,desertificación,2
+co2,deforestación,3
+co2,energía limpia,16
+co2,aumento del nivel del mar,1
+co2,extinción,3
+emisiones,calentamiento global,75
+emisiones,energía renovable,20
+emisiones,catástrofe,13
+emisiones,biocombustibles sostenibles,1
+emisiones,desertificación,2
+emisiones,deforestación,37
+emisiones,energía limpia,30
+emisiones,aumento del nivel del mar,4
+emisiones,extinción,1
+calentamiento global,derretimiento de glaciares,5
+calentamiento global,desinformación,2
+calentamiento global,catástrofe,7
+calentamiento global,antropogénico,18
+calentamiento global,desertificación,10
+calentamiento global,deforestación,11
+calentamiento global,aumento del nivel del mar,9
+calentamiento global,extinción,14
+derretimiento de glaciares,aumento del nivel del mar,6
+energía renovable,energía limpia,7
+energía renovable,aumento del nivel del mar,2
+desinformación,catástrofe,7
+desinformación,energía limpia,3
+desinformación,extinción,2
+catástrofe,deforestación,1
+catástrofe,energía limpia,2
+catástrofe,extinción,3
+desertificación,deforestación,2
+desertificación,energía limpia,2
+desertificación,aumento del nivel del mar,4
+desertificación,extinción,2
+deforestación,aumento del nivel del mar,1
+deforestación,extinción,19

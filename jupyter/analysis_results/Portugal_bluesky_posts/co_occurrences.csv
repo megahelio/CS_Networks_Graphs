@@ -1,0 +1,83 @@
+w1,w2,count
+transição verde,efeito estufa,4
+transição verde,eventos climáticos extremos,2
+transição verde,emissões,4
+transição verde,energia limpa,8
+efeito estufa,perda de biodiversidade,6
+efeito estufa,eventos climáticos extremos,4
+efeito estufa,co2,29
+efeito estufa,emissões,550
+efeito estufa,aquecimento global,77
+efeito estufa,derretimento das geleiras,2
+efeito estufa,energia renovável,8
+efeito estufa,catástrofe,3
+efeito estufa,antropogênico,1
+efeito estufa,desmatamento,107
+efeito estufa,energia limpa,9
+efeito estufa,extinção,3
+perda de biodiversidade,eventos climáticos extremos,2
+perda de biodiversidade,emissões,9
+perda de biodiversidade,aquecimento global,8
+perda de biodiversidade,desinformação,2
+perda de biodiversidade,desertificação,4
+perda de biodiversidade,desmatamento,23
+perda de biodiversidade,energia limpa,1
+perda de biodiversidade,extinção,7
+eventos climáticos extremos,emissões,4
+eventos climáticos extremos,aquecimento global,29
+eventos climáticos extremos,energia renovável,4
+eventos climáticos extremos,desinformação,4
+eventos climáticos extremos,catástrofe,2
+eventos climáticos extremos,desmatamento,10
+eventos climáticos extremos,aumento do nível do mar,8
+co2,emissões,176
+co2,aquecimento global,33
+co2,derretimento das geleiras,3
+co2,desinformação,2
+co2,antropogênico,4
+co2,desertificação,3
+co2,desmatamento,10
+co2,energia limpa,11
+co2,aumento do nível do mar,2
+co2,extinção,3
+emissões,aquecimento global,78
+emissões,derretimento das geleiras,2
+emissões,energia renovável,17
+emissões,catástrofe,8
+emissões,antropogênico,2
+emissões,desmatamento,165
+emissões,energia limpa,24
+emissões,aumento do nível do mar,4
+emissões,extinção,1
+aquecimento global,derretimento das geleiras,9
+aquecimento global,energia renovável,3
+aquecimento global,desinformação,8
+aquecimento global,catástrofe,12
+aquecimento global,antropogênico,23
+aquecimento global,desertificação,16
+aquecimento global,desmatamento,36
+aquecimento global,energia limpa,4
+aquecimento global,aumento do nível do mar,15
+aquecimento global,extinção,14
+derretimento das geleiras,desertificação,3
+derretimento das geleiras,desmatamento,1
+derretimento das geleiras,aumento do nível do mar,6
+derretimento das geleiras,extinção,3
+energia renovável,desertificação,2
+energia renovável,energia limpa,30
+energia renovável,aumento do nível do mar,2
+energia renovável,extinção,1
+desinformação,catástrofe,1
+desinformação,extinção,4
+catástrofe,desertificação,1
+catástrofe,extinção,4
+antropogênico,extinção,1
+desertificação,desmatamento,17
+desertificação,energia limpa,3
+desertificação,aumento do nível do mar,2
+desertificação,extinção,7
+desmatamento,energia limpa,13
+desmatamento,aumento do nível do mar,3
+desmatamento,extinção,8
+energia limpa,extinção,2
+aumento do nível do mar,extinção,3

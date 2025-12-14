@@ -1,0 +1,100 @@
+w1,w2,count
+green transition,co2,5
+green transition,emissions,13
+green transition,global warming,3
+green transition,renewable energy,9
+green transition,catastrophe,1
+green transition,deforestation,1
+green transition,clean energy,4
+greenhouse effect,extreme weather events,1
+greenhouse effect,co2,81
+greenhouse effect,emissions,32
+greenhouse effect,global warming,40
+greenhouse effect,renewable energy,1
+greenhouse effect,misinformation,1
+greenhouse effect,catastrophe,4
+greenhouse effect,anthropogenic ,7
+greenhouse effect,sea level rise,1
+greenhouse effect,extinction,10
+loss of biodiversity,extreme weather events,2
+loss of biodiversity,co2,1
+loss of biodiversity,emissions,8
+loss of biodiversity,global warming,4
+loss of biodiversity,melting glaciers,2
+loss of biodiversity,catastrophe,1
+loss of biodiversity,desertification,3
+loss of biodiversity,deforestation,12
+loss of biodiversity,extinction,23
+extreme weather events,co2,5
+extreme weather events,emissions,23
+extreme weather events,global warming,35
+extreme weather events,melting glaciers,4
+extreme weather events,renewable energy,2
+extreme weather events,misinformation,5
+extreme weather events,catastrophe,2
+extreme weather events,anthropogenic ,7
+extreme weather events,deforestation,3
+extreme weather events,clean energy,4
+extreme weather events,sea level rise,10
+extreme weather events,extinction,4
+co2,emissions,305
+co2,global warming,27
+co2,renewable energy,11
+co2,misinformation,1
+co2,catastrophe,3
+co2,anthropogenic ,45
+co2,desertification,5
+co2,deforestation,31
+co2,clean energy,5
+co2,sea level rise,9
+co2,extinction,9
+emissions,global warming,57
+emissions,melting glaciers,3
+emissions,renewable energy,28
+emissions,catastrophe,3
+emissions,anthropogenic ,80
+emissions,sustainable biofuels,2
+emissions,desertification,4
+emissions,deforestation,81
+emissions,clean energy,34
+emissions,sea level rise,11
+emissions,extinction,9
+global warming,melting glaciers,37
+global warming,renewable energy,9
+global warming,catastrophe,9
+global warming,anthropogenic ,135
+global warming,desertification,13
+global warming,deforestation,17
+global warming,clean energy,8
+global warming,sea level rise,29
+global warming,extinction,30
+melting glaciers,desertification,6
+melting glaciers,deforestation,2
+melting glaciers,sea level rise,31
+melting glaciers,extinction,8
+renewable energy,misinformation,2
+renewable energy,anthropogenic ,4
+renewable energy,desertification,4
+renewable energy,deforestation,4
+renewable energy,clean energy,70
+renewable energy,extinction,1
+misinformation,catastrophe,1
+misinformation,anthropogenic ,1
+catastrophe,anthropogenic ,10
+catastrophe,desertification,3
+catastrophe,deforestation,9
+catastrophe,clean energy,6
+catastrophe,sea level rise,2
+catastrophe,extinction,6
+anthropogenic ,deforestation,4
+anthropogenic ,clean energy,1
+anthropogenic ,sea level rise,5
+anthropogenic ,extinction,49
+sustainable biofuels,clean energy,1
+desertification,deforestation,19
+desertification,clean energy,4
+desertification,sea level rise,13
+desertification,extinction,8
+deforestation,clean energy,4
+deforestation,extinction,32
+sea level rise,extinction,6

@@ -1,0 +1,167 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script src="lib/bindings/utils.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 750px;
+                 background-color: #ffffff;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+
+             
+             #config {
+                 float: left;
+                 width: 400px;
+                 height: 600px;
+             }
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+        
+            <div id="config"></div>
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"font": {"color": "black"}, "group": 1, "id": "gr\u00fcne Wende", "label": "gr\u00fcne Wende", "shape": "dot", "title": "gr\u00fcne Wende (Degree: 4)", "value": 4}, {"font": {"color": "black"}, "group": 1, "id": "Treibhauseffekt", "label": "Treibhauseffekt", "shape": "dot", "title": "Treibhauseffekt (Degree: 8)", "value": 8}, {"font": {"color": "black"}, "group": 0, "id": "Biodiversit\u00e4tsverlust", "label": "Biodiversit\u00e4tsverlust", "shape": "dot", "title": "Biodiversit\u00e4tsverlust (Degree: 9)", "value": 9}, {"font": {"color": "black"}, "group": 0, "id": "extreme Wetterereignisse", "label": "extreme Wetterereignisse", "shape": "dot", "title": "extreme Wetterereignisse (Degree: 7)", "value": 7}, {"font": {"color": "black"}, "group": 1, "id": "co2", "label": "co2", "shape": "dot", "title": "co2 (Degree: 16)", "value": 16}, {"font": {"color": "black"}, "group": 1, "id": "Emissionen", "label": "Emissionen", "shape": "dot", "title": "Emissionen (Degree: 15)", "value": 15}, {"font": {"color": "black"}, "group": 0, "id": "Erderw\u00e4rmung", "label": "Erderw\u00e4rmung", "shape": "dot", "title": "Erderw\u00e4rmung (Degree: 13)", "value": 13}, {"font": {"color": "black"}, "group": 0, "id": "Gletscherschmelze", "label": "Gletscherschmelze", "shape": "dot", "title": "Gletscherschmelze (Degree: 6)", "value": 6}, {"font": {"color": "black"}, "group": 1, "id": "erneuerbare Energien", "label": "erneuerbare Energien", "shape": "dot", "title": "erneuerbare Energien (Degree: 6)", "value": 6}, {"font": {"color": "black"}, "group": 0, "id": "Fehlinformationen", "label": "Fehlinformationen", "shape": "dot", "title": "Fehlinformationen (Degree: 2)", "value": 2}, {"font": {"color": "black"}, "group": 0, "id": "Katastrophe", "label": "Katastrophe", "shape": "dot", "title": "Katastrophe (Degree: 16)", "value": 16}, {"font": {"color": "black"}, "group": 0, "id": "anthropogen", "label": "anthropogen", "shape": "dot", "title": "anthropogen (Degree: 8)", "value": 8}, {"font": {"color": "black"}, "group": 2, "id": "nachhaltige Biokraftstoffe", "label": "nachhaltige Biokraftstoffe", "shape": "dot", "title": "nachhaltige Biokraftstoffe (Degree: 0)", "value": 0}, {"font": {"color": "black"}, "group": 0, "id": "W\u00fcstenbildung", "label": "W\u00fcstenbildung", "shape": "dot", "title": "W\u00fcstenbildung (Degree: 7)", "value": 7}, {"font": {"color": "black"}, "group": 0, "id": "Abholzung", "label": "Abholzung", "shape": "dot", "title": "Abholzung (Degree: 9)", "value": 9}, {"font": {"color": "black"}, "group": 1, "id": "saubere Energie", "label": "saubere Energie", "shape": "dot", "title": "saubere Energie (Degree: 5)", "value": 5}, {"font": {"color": "black"}, "group": 0, "id": "Meeresspiegelanstieg", "label": "Meeresspiegelanstieg", "shape": "dot", "title": "Meeresspiegelanstieg (Degree: 9)", "value": 9}, {"font": {"color": "black"}, "group": 0, "id": "Aussterben", "label": "Aussterben", "shape": "dot", "title": "Aussterben (Degree: 12)", "value": 12}]);
+                  edges = new vis.DataSet([{"color": "#440256", "from": "gr\u00fcne Wende", "opacity": 0.8, "title": "Co-occurrences: 3", "to": "co2", "value": 3}, {"color": "#440256", "from": "gr\u00fcne Wende", "opacity": 0.8, "title": "Co-occurrences: 2", "to": "Emissionen", "value": 2}, {"color": "#440154", "from": "gr\u00fcne Wende", "opacity": 0.8, "title": "Co-occurrences: 1", "to": "erneuerbare Energien", "value": 1}, {"color": "#440154", "from": "gr\u00fcne Wende", "opacity": 0.8, "title": "Co-occurrences: 1", "to": "Katastrophe", "value": 1}, {"color": "#440256", "from": "Treibhauseffekt", "opacity": 0.8, "title": "Co-occurrences: 2", "to": "Biodiversit\u00e4tsverlust", "value": 2}, {"color": "#3e4a89", "from": "Treibhauseffekt", "opacity": 0.8, "title": "Co-occurrences: 91", "to": "co2", "value": 91}, {"color": "#471063", "from": "Treibhauseffekt", "opacity": 0.8, "title": "Co-occurrences: 17", "to": "Emissionen", "value": 17}, {"color": "#471063", "from": "Treibhauseffekt", "opacity": 0.8, "title": "Co-occurrences: 17", "to": "Erderw\u00e4rmung", "value": 17}, {"color": "#460b5e", "from": "Treibhauseffekt", "opacity": 0.8, "title": "Co-occurrences: 12", "to": "Katastrophe", "value": 12}, {"color": "#450457", "from": "Treibhauseffekt", "opacity": 0.8, "title": "Co-occurrences: 4", "to": "anthropogen", "value": 4}, {"color": "#440256", "from": "Treibhauseffekt", "opacity": 0.8, "title": "Co-occurrences: 2", "to": "Abholzung", "value": 2}, {"color": "#440256", "from": "Treibhauseffekt", "opacity": 0.8, "title": "Co-occurrences: 2", "to": "Aussterben", "value": 2}, {"color": "#440256", "from": "Biodiversit\u00e4tsverlust", "opacity": 0.8, "title": "Co-occurrences: 2", "to": "extreme Wetterereignisse", "value": 2}, {"color": "#450559", "from": "Biodiversit\u00e4tsverlust", "opacity": 0.8, "title": "Co-occurrences: 5", "to": "co2", "value": 5}, {"color": "#450559", "from": "Biodiversit\u00e4tsverlust", "opacity": 0.8, "title": "Co-occurrences: 6", "to": "Emissionen", "value": 6}, {"color": "#440256", "from": "Biodiversit\u00e4tsverlust", "opacity": 0.8, "title": "Co-occurrences: 2", "to": "Erderw\u00e4rmung", "value": 2}, {"color": "#470e61", "from": "Biodiversit\u00e4tsverlust", "opacity": 0.8, "title": "Co-occurrences: 15", "to": "Katastrophe", "value": 15}, {"color": "#46075a", "from": "Biodiversit\u00e4tsverlust", "opacity": 0.8, "title": "Co-occurrences: 7", "to": "Abholzung", "value": 7}, {"color": "#440256", "from": "Biodiversit\u00e4tsverlust", "opacity": 0.8, "title": "Co-occurrences: 2", "to": "Meeresspiegelanstieg", "value": 2}, {"color": "#440256", "from": "Biodiversit\u00e4tsverlust", "opacity": 0.8, "title": "Co-occurrences: 3", "to": "Aussterben", "value": 3}, {"color": "#450457", "from": "extreme Wetterereignisse", "opacity": 0.8, "title": "Co-occurrences: 4", "to": "co2", "value": 4}, {"color": "#450457", "from": "extreme Wetterereignisse", "opacity": 0.8, "title": "Co-occurrences: 4", "to": "Emissionen", "value": 4}, {"color": "#450559", "from": "extreme Wetterereignisse", "opacity": 0.8, "title": "Co-occurrences: 5", "to": "Erderw\u00e4rmung", "value": 5}, {"color": "#471063", "from": "extreme Wetterereignisse", "opacity": 0.8, "title": "Co-occurrences: 16", "to": "Katastrophe", "value": 16}, {"color": "#440154", "from": "extreme Wetterereignisse", "opacity": 0.8, "title": "Co-occurrences: 1", "to": "anthropogen", "value": 1}, {"color": "#440256", "from": "extreme Wetterereignisse", "opacity": 0.8, "title": "Co-occurrences: 2", "to": "Meeresspiegelanstieg", "value": 2}, {"color": "#fde725", "from": "co2", "opacity": 0.8, "title": "Co-occurrences: 403", "to": "Emissionen", "value": 403}, {"color": "#433d84", "from": "co2", "opacity": 0.8, "title": "Co-occurrences: 71", "to": "Erderw\u00e4rmung", "value": 71}, {"color": "#450559", "from": "co2", "opacity": 0.8, "title": "Co-occurrences: 5", "to": "Gletscherschmelze", "value": 5}, {"color": "#471365", "from": "co2", "opacity": 0.8, "title": "Co-occurrences: 19", "to": "erneuerbare Energien", "value": 19}, {"color": "#440154", "from": "co2", "opacity": 0.8, "title": "Co-occurrences: 1", "to": "Fehlinformationen", "value": 1}, {"color": "#481a6c", "from": "co2", "opacity": 0.8, "title": "Co-occurrences: 28", "to": "Katastrophe", "value": 28}, {"color": "#440256", "from": "co2", "opacity": 0.8, "title": "Co-occurrences: 2", "to": "anthropogen", "value": 2}, {"color": "#440256", "from": "co2", "opacity": 0.8, "title": "Co-occurrences: 2", "to": "W\u00fcstenbildung", "value": 2}, {"color": "#482374", "from": "co2", "opacity": 0.8, "title": "Co-occurrences: 39", "to": "Abholzung", "value": 39}, {"color": "#460a5d", "from": "co2", "opacity": 0.8, "title": "Co-occurrences: 11", "to": "saubere Energie", "value": 11}, {"color": "#460a5d", "from": "co2", "opacity": 0.8, "title": "Co-occurrences: 11", "to": "Meeresspiegelanstieg", "value": 11}, {"color": "#450559", "from": "co2", "opacity": 0.8, "title": "Co-occurrences: 6", "to": "Aussterben", "value": 6}, {"color": "#472c7a", "from": "Emissionen", "opacity": 0.8, "title": "Co-occurrences: 49", "to": "Erderw\u00e4rmung", "value": 49}, {"color": "#450559", "from": "Emissionen", "opacity": 0.8, "title": "Co-occurrences: 6", "to": "Gletscherschmelze", "value": 6}, {"color": "#470d60", "from": "Emissionen", "opacity": 0.8, "title": "Co-occurrences: 14", "to": "erneuerbare Energien", "value": 14}, {"color": "#481c6e", "from": "Emissionen", "opacity": 0.8, "title": "Co-occurrences: 30", "to": "Katastrophe", "value": 30}, {"color": "#450457", "from": "Emissionen", "opacity": 0.8, "title": "Co-occurrences: 4", "to": "anthropogen", "value": 4}, {"color": "#440154", "from": "Emissionen", "opacity": 0.8, "title": "Co-occurrences: 1", "to": "W\u00fcstenbildung", "value": 1}, {"color": "#481467", "from": "Emissionen", "opacity": 0.8, "title": "Co-occurrences: 21", "to": "Abholzung", "value": 21}, {"color": "#46085c", "from": "Emissionen", "opacity": 0.8, "title": "Co-occurrences: 9", "to": "saubere Energie", "value": 9}, {"color": "#450457", "from": "Emissionen", "opacity": 0.8, "title": "Co-occurrences: 4", "to": "Meeresspiegelanstieg", "value": 4}, {"color": "#450457", "from": "Emissionen", "opacity": 0.8, "title": "Co-occurrences: 4", "to": "Aussterben", "value": 4}, {"color": "#46075a", "from": "Erderw\u00e4rmung", "opacity": 0.8, "title": "Co-occurrences: 7", "to": "Gletscherschmelze", "value": 7}, {"color": "#46337f", "from": "Erderw\u00e4rmung", "opacity": 0.8, "title": "Co-occurrences: 59", "to": "Katastrophe", "value": 59}, {"color": "#440154", "from": "Erderw\u00e4rmung", "opacity": 0.8, "title": "Co-occurrences: 1", "to": "anthropogen", "value": 1}, {"color": "#440256", "from": "Erderw\u00e4rmung", "opacity": 0.8, "title": "Co-occurrences: 2", "to": "W\u00fcstenbildung", "value": 2}, {"color": "#450559", "from": "Erderw\u00e4rmung", "opacity": 0.8, "title": "Co-occurrences: 5", "to": "Abholzung", "value": 5}, {"color": "#440154", "from": "Erderw\u00e4rmung", "opacity": 0.8, "title": "Co-occurrences: 1", "to": "saubere Energie", "value": 1}, {"color": "#460a5d", "from": "Erderw\u00e4rmung", "opacity": 0.8, "title": "Co-occurrences: 11", "to": "Meeresspiegelanstieg", "value": 11}, {"color": "#450457", "from": "Erderw\u00e4rmung", "opacity": 0.8, "title": "Co-occurrences: 4", "to": "Aussterben", "value": 4}, {"color": "#471164", "from": "Gletscherschmelze", "opacity": 0.8, "title": "Co-occurrences: 18", "to": "Katastrophe", "value": 18}, {"color": "#450457", "from": "Gletscherschmelze", "opacity": 0.8, "title": "Co-occurrences: 4", "to": "Meeresspiegelanstieg", "value": 4}, {"color": "#440154", "from": "Gletscherschmelze", "opacity": 0.8, "title": "Co-occurrences: 1", "to": "Aussterben", "value": 1}, {"color": "#450457", "from": "erneuerbare Energien", "opacity": 0.8, "title": "Co-occurrences: 4", "to": "Katastrophe", "value": 4}, {"color": "#450559", "from": "erneuerbare Energien", "opacity": 0.8, "title": "Co-occurrences: 6", "to": "saubere Energie", "value": 6}, {"color": "#440154", "from": "erneuerbare Energien", "opacity": 0.8, "title": "Co-occurrences: 1", "to": "Aussterben", "value": 1}, {"color": "#450457", "from": "Fehlinformationen", "opacity": 0.8, "title": "Co-occurrences: 4", "to": "Katastrophe", "value": 4}, {"color": "#46075a", "from": "Katastrophe", "opacity": 0.8, "title": "Co-occurrences: 7", "to": "anthropogen", "value": 7}, {"color": "#460b5e", "from": "Katastrophe", "opacity": 0.8, "title": "Co-occurrences: 12", "to": "W\u00fcstenbildung", "value": 12}, {"color": "#481467", "from": "Katastrophe", "opacity": 0.8, "title": "Co-occurrences: 22", "to": "Abholzung", "value": 22}, {"color": "#450559", "from": "Katastrophe", "opacity": 0.8, "title": "Co-occurrences: 5", "to": "saubere Energie", "value": 5}, {"color": "#471365", "from": "Katastrophe", "opacity": 0.8, "title": "Co-occurrences: 19", "to": "Meeresspiegelanstieg", "value": 19}, {"color": "#471164", "from": "Katastrophe", "opacity": 0.8, "title": "Co-occurrences: 18", "to": "Aussterben", "value": 18}, {"color": "#440256", "from": "anthropogen", "opacity": 0.8, "title": "Co-occurrences: 2", "to": "Abholzung", "value": 2}, {"color": "#440154", "from": "anthropogen", "opacity": 0.8, "title": "Co-occurrences: 1", "to": "Aussterben", "value": 1}, {"color": "#450457", "from": "W\u00fcstenbildung", "opacity": 0.8, "title": "Co-occurrences: 4", "to": "Abholzung", "value": 4}, {"color": "#440256", "from": "W\u00fcstenbildung", "opacity": 0.8, "title": "Co-occurrences: 2", "to": "Meeresspiegelanstieg", "value": 2}, {"color": "#440154", "from": "W\u00fcstenbildung", "opacity": 0.8, "title": "Co-occurrences: 1", "to": "Aussterben", "value": 1}, {"color": "#46085c", "from": "Abholzung", "opacity": 0.8, "title": "Co-occurrences: 8", "to": "Aussterben", "value": 8}, {"color": "#440154", "from": "Meeresspiegelanstieg", "opacity": 0.8, "title": "Co-occurrences: 1", "to": "Aussterben", "value": 1}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {
+    "configure": {
+        "enabled": true
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": true,
+            "type": "dynamic"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": true,
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+
+                  
+
+
+                  
+                  // if this network requires displaying the configure window,
+                  // put it in its div
+                  options.configure["container"] = document.getElementById("config");
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+
+                  
+
+
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>
