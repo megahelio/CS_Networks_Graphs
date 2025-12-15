@@ -1,0 +1,54 @@
+{
+    "English": {
+        "lang": "en",
+        "keywords": [
+            "green transition", "greenhouse effect", "loss of biodiversity", "extreme weather events",
+            "co2", "emissions", "global warming", "melting glaciers", "renewable energy",
+            "misinformation", "catastrophe", 
+            "anthropogenic ",
+             "sustainable biofuels",
+            "desertification", "deforestation", "clean energy",
+            "sea level rise", "extinction"
+        ]
+    },
+    "Spain": {
+        "lang": "es",
+        "keywords": [
+            "transición verde", "efecto invernadero", "pérdida de biodiversidad", "eventos climáticos extremos",
+            "co2", "emisiones", "calentamiento global", "derretimiento de glaciares", "energía renovable",
+            "desinformación", "catástrofe", "antropogénico", "biocombustibles sostenibles",
+            "desertificación", "deforestación", "energía limpia",
+            "aumento del nivel del mar", "extinción"
+        ]
+    },
+    "Portugal": {
+        "lang": "pt",
+        "keywords": [
+            "transição verde", "efeito estufa", "perda de biodiversidade", "eventos climáticos extremos",
+            "co2", "emissões", "aquecimento global", "derretimento das geleiras", "energia renovável",
+            "desinformação", "catástrofe", "antropogênico", "biocombustíveis sustentáveis",
+            "desertificação", "desmatamento", "energia limpa",
+            "aumento do nível do mar", "extinção"
+        ]
+    },
+    "Italy": {
+        "lang": "it",
+        "keywords": [
+            "transizione verde", "effetto serra", "perdita di biodiversità", "eventi meteorologici estremi",
+            "co2", "emissioni", "riscaldamento globale", "scioglimento dei ghiacciai", "energia rinnovabile",
+            "disinformazione", "catastrofe", "antropogenico", "biocarburanti sostenibili",
+            "desertificazione", "deforestazione", "energia pulita",
+            "innalzamento del livello del mare", "estinzione"
+        ]
+    },
+    "Germany": { 
+        "lang": "de",
+        "keywords": [
+            "grüne wende", "treibhauseffekt", "biodiversitätsverlust", "extreme wetterereignisse",
+            "co2", "emissionen", "erderwärmung", "gletscherschmelze", "erneuerbare energien",
+            "fehlinformationen", "katastrophe", "anthropogen", "nachhaltige biokraftstoffe",
+            "wüstenbildung", "abholzung", "saubere energie",
+            "meeresspiegelanstieg", "aussterben"
+        ]
+    }
+}

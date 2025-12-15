@@ -11,3 +11,10 @@ pyvis
 # for jupyter (optional)
 ipykernel
 ipywidgets
+
+# for LM
+# torch
+# torchvision
+# transformers
+# hf_xet 
+
