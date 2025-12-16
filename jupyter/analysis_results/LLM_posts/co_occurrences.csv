@@ -1,0 +1,58 @@
+w1,w2,count
+green transition,emissions,27
+green transition,global warming,2
+green transition,renewable energy,47
+greenhouse effect,extreme weather events,3
+greenhouse effect,co2,2
+greenhouse effect,emissions,11
+greenhouse effect,global warming,31
+greenhouse effect,renewable energy,4
+greenhouse effect,anthropogenic ,1
+greenhouse effect,deforestation,10
+greenhouse effect,sea level rise,1
+loss of biodiversity,emissions,2
+loss of biodiversity,desertification,4
+loss of biodiversity,deforestation,17
+loss of biodiversity,extinction,21
+extreme weather events,emissions,6
+extreme weather events,global warming,20
+extreme weather events,melting glaciers,1
+extreme weather events,renewable energy,2
+extreme weather events,anthropogenic ,3
+extreme weather events,desertification,1
+extreme weather events,deforestation,4
+extreme weather events,sea level rise,1
+co2,emissions,15
+co2,global warming,9
+co2,renewable energy,1
+co2,anthropogenic ,1
+co2,deforestation,4
+emissions,global warming,43
+emissions,melting glaciers,4
+emissions,renewable energy,64
+emissions,misinformation,1
+emissions,anthropogenic ,17
+emissions,sustainable biofuels,12
+emissions,desertification,1
+emissions,deforestation,18
+emissions,clean energy,20
+emissions,sea level rise,2
+global warming,melting glaciers,4
+global warming,renewable energy,14
+global warming,misinformation,1
+global warming,anthropogenic ,13
+global warming,desertification,1
+global warming,deforestation,15
+global warming,sea level rise,14
+global warming,extinction,1
+melting glaciers,sea level rise,1
+renewable energy,sustainable biofuels,12
+renewable energy,deforestation,2
+renewable energy,clean energy,8
+catastrophe,extinction,2
+anthropogenic ,deforestation,16
+anthropogenic ,sea level rise,1
+sustainable biofuels,deforestation,1
+sustainable biofuels,clean energy,1
+desertification,deforestation,10
+deforestation,extinction,14
