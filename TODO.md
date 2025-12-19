@@ -24,7 +24,8 @@
 
 Choose one of the following options (or both :P):
 
-    - [ ] We want to use an LLM to generate posts based on the original keywords and compare them with the previous set.
+    - [X] We want to use an LLM to generate posts based on the original keywords and compare them with the previous set.
+        - [ ] Spain (las tildes hacen que algunas palabras puedan no encontrarse en el texto)
 
     - [x] We want to compare results between diferent countries/languages.
 
